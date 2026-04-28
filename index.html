@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Voice Generator Pro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+  <h1>🎤 Voice Generator Pro</h1>
+
+  <textarea id="text" placeholder="Type something..."></textarea>
+
+  <!-- 🌍 Language -->
+  <label>Language</label>
+  <select id="language"></select>
+
+  <!-- 🎤 Voice -->
+  <label>Voice</label>
+  <select id="voice"></select>
+
+  <!-- 🎚 Speed -->
+  <label>Speed</label>
+  <input type="range" id="speed" min="0.5" max="2" step="0.1" value="1">
+
+  <!-- 🎚 Pitch -->
+  <label>Pitch</label>
+  <input type="range" id="pitch" min="0" max="2" step="0.1" value="1">
+
+  <div class="buttons">
+    <button onclick="speakText()">▶ Speak</button>
+    <button onclick="stopSpeech()">⏹ Stop</button>
+    <button onclick="recordSpeech()">💾 Download Audio</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
