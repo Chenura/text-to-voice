@@ -16,7 +16,7 @@ function loadVoices() {
   });
 }
 
-// Languages (browser supported ones)
+// Supported languages
 const languages = ["en-US", "en-GB", "hi-IN"];
 
 window.onload = () => {
@@ -58,33 +58,4 @@ function speakText() {
 // ⏹ Stop speech
 function stopSpeech() {
   speechSynthesis.cancel();
-}
-
-// 💾 Record speech (browser limitation workaround)
-function recordSpeech() {
-  const text = document.getElementById("text").value;
-  if (!text) return;
-
-  const stream = new MediaStream();
-  const recorder = new MediaRecorder(stream);
-  const chunks = [];
-
-  recorder.ondataavailable = e => chunks.push(e.data);
-
-  recorder.onstop = () => {
-    const blob = new Blob(chunks, { type: "audio/webm" });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "voice.webm";
-    a.click();
-  };
-
-  recorder.start();
-
-  const synth = new SpeechSynthesisUtterance(text);
-  synth.onend = () => recorder.stop();
-
-  speechSynthesis.speak(synth);
 }
